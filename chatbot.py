@@ -3,6 +3,8 @@ from pydantic import BaseModel
 import torch
 from transformers import pipeline
 
+print('Loading the model...')
+
 # Load the model and set up the pipeline
 model_id = "chuanli11/Llama-3.2-3B-Instruct-uncensored"
 pipe = pipeline(
@@ -12,9 +14,11 @@ pipe = pipeline(
     device_map="auto",
 )
 
+print('Initializing API...')
 # Initialize FastAPI app
 app = FastAPI()
 
+print('Defining req/res schemas...')
 # Define request and response schemas
 class Message(BaseModel):
     role: str
